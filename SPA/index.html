@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Management</title>
+</head>
+<body>
+
+    <form id="mon-form">
+        <input type="text" id="prenom" placeholder="Votre prénom">
+        <button type="submit">Dire Bonjour</button>
+    </form>
+    <ul id="liste"></ul>
+
+    <hr>
+
+    <button id="btn-show-form">New category</button>
+
+    <div id="section-form" hidden>
+        <form id="form-categorie">
+            <div>
+                <label for="cat-nom">Category Name:</label>
+                <input type="text" id="cat-nom" required>
+            </div>
+            <div>
+                <label for="cat-couleur">Color:</label>
+                <input type="text" id="cat-couleur" placeholder="#ff0000 or red" required>
+            </div>
+            <button type="submit">Add Category</button>
+            <button type="button" id="btn-cancel-form">Cancel</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody id="table-categories-body"></tbody>
+    </table>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Part 1: Hello Form ---
+        const form = document.querySelector('#mon-form');
+        const input = document.querySelector('#prenom');
+        const liste = document.querySelector('#liste');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            liste.insertAdjacentHTML('beforeend', `<li>Bonjour ${input.value} !</li>`);
+            form.reset();
+        });
+
+        // --- Part 2.1 & 2.2: Category Form & Table Insertion ---
+        const btnShowForm = document.querySelector('#btn-show-form');
+        const sectionForm = document.querySelector('#section-form');
+        const btnCancelForm = document.querySelector('#btn-cancel-form');
+        
+        const formCategorie = document.querySelector('#form-categorie');
+        const catNom = document.querySelector('#cat-nom');
+        const catCouleur = document.querySelector('#cat-couleur');
+        const tableCategoriesBody = document.querySelector('#table-categories-body');
+
+        // Toggle Form Visibility
+        btnShowForm.addEventListener('click', () => {
+            btnShowForm.hidden = true;
+            sectionForm.hidden = false;
+        });
+
+        btnCancelForm.addEventListener('click', () => {
+            sectionForm.hidden = true;
+            btnShowForm.hidden = false;
+            formCategorie.reset();
+        });
+
+        // Handle Form Submission
+        formCategorie.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const nom = catNom.value.trim();
+            const couleur = catCouleur.value.trim();
+
+            const rowHTML = `
+                <tr>
+                    <td>${nom}</td>
+                    <td><span style="background-color: ${couleur}; padding: 2px 8px; color: #fff;">${couleur}</span></td>
+                </tr>
+            `;
+
+            tableCategoriesBody.insertAdjacentHTML('beforeend', rowHTML);
+
+            // Reset and hide
+            formCategorie.reset();
+            sectionForm.hidden = true;
+            btnShowForm.hidden = false;
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+sequenceDiagram
+    actor Auteur
+    participant Système
+    participant Système
+    Auteur ->> Système: Accède à la création d'article
+    Système -->> Auteur: Affiche le formulaire de rédaction
+    Auteur ->> Système: Remplit le formulaire (Titre, Catégorie, Statut, Image, Contenu) et enregistre
+    Système -->> Auteur: Sauvegarde l'article et redirige vers la liste
+
+

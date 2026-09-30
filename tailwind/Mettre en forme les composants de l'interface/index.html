@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Catégories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Container Principal (Layout T.225.111) -->
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white p-6 flex flex-col justify-between">
+            <div>
+                <h2 class="text-xl font-bold mb-6">Admin Dashboard</h2>
+                <nav class="space-y-2">
+                    <a href="#" class="block bg-blue-600 text-white rounded-lg px-4 py-2 font-medium">Catégories</a>
+                    <a href="#" class="block text-gray-300 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Produits</a>
+                    <a href="#" class="block text-gray-300 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Commandes</a>
+                    <a href="#" class="block text-gray-300 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Paramètres</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Conteneur de contenu principal -->
+        <div class="flex-1 flex flex-col">
+
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b px-6 py-4 flex items-center justify-between">
+                <h1 class="text-xl font-semibold text-gray-800">Gestion des Catégories</h1>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Administrateur</span>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 p-6">
+                <div class="max-w-5xl mx-auto space-y-6">
+
+                    <!-- Actions & Formulaire -->
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-medium text-gray-700">Liste des catégories</h2>
+                        <button id="btn-show-form" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            + Nouvelle catégorie
+                        </button>
+                    </div>
+
+                    <!-- Section Formulaire -->
+                    <div id="section-form" hidden class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-md font-semibold mb-4 text-gray-800">Ajouter une catégorie</h3>
+                        
+                        <form id="form-categorie" class="space-y-4">
+                            <div>
+                                <label for="cat-nom" class="block text-sm font-medium text-gray-700 mb-1">Nom de la catégorie</label>
+                                <input type="text" id="cat-nom" required class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="cat-couleur" class="block text-sm font-medium text-gray-700 mb-1">Couleur (Hex ou Nom)</label>
+                                <input type="text" id="cat-couleur" placeholder="#3b82f6" required class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                            <div class="flex items-center space-x-3 pt-2">
+                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                    Enregistrer
+                                </button>
+                                <button type="button" id="btn-cancel-form" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
+                                    Annuler
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Tableau des catégories -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 text-left text-xs text-gray-500 uppercase">
+                                <tr>
+                                    <th class="px-6 py-3">Nom</th>
+                                    <th class="px-6 py-3">Couleur</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-categories-body" class="divide-y divide-gray-200 text-sm text-gray-700">
+                                <tr class="border-b hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 font-medium">Interface Web</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1 text-xs rounded text-white" style="background-color: #3b82f6;">#3b82f6</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 font-medium">Programmation</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1 text-xs rounded text-white" style="background-color: #ef4444;">#ef4444</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

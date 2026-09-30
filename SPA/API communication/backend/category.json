@@ -1,0 +1,6 @@
+[
+    { "id": 1, "nom": "Développement", "couleur": "red" },
+    { "id": 2, "nom": "Design UI/UX", "couleur": "blue" },
+    { "id": 3, "nom": "Productivité", "couleur": "yellow" }
+  ]
+  

@@ -1,0 +1,15 @@
+interface,Nom,Signification,Format,Obligatoire,Calculée
+article,id_article,Unique identifier of the article,Integer (INT),Yes,No
+article,titre,Title of the article,String (VARCHAR),Yes,No
+article,contenu,Content / body of the article,Long Text (TEXT),Yes,No
+article,date_publication,Publication date of the article,DD/MM/YYYY,Yes,No
+article,image,Article cover image path,Path / URL,No,No
+user,id_auteur,Unique identifier of the author,Integer (INT),Yes,No
+user,nom_auteur,Author's last name,String (VARCHAR),Yes,No
+user,prenom_auteur,Author's first name,String (VARCHAR),Yes,No
+user,image_auteur,Author profile picture path,Path / URL,No,No
+user,email_auteur,Author's email address,Email format,Yes,No
+user,mot_de_passe,Author's password hash,Encrypted string,Yes,No
+user,date_inscription,Registration date of the author,DD/MM/YYYY,Yes,No
+category,id_category,Unique identifier of the category,Integer (INT),Yes,No
+category,nom_category,Name of the category,String (VARCHAR),Yes,No

@@ -1,0 +1,10 @@
+interface,Nom,Signification,Format,Obligatoire,Calculée
+client,id_client,Unique identifier of the client,Integer (INT),Yes,No
+client,nom_client,Full name of the client,String (VARCHAR),Yes,No
+client,email_client,Email address of the client,Email format,Yes,No
+produit,id_produit,Unique identifier of the product,Integer (INT),Yes,No
+produit,nom_produit,Name of the product,String (VARCHAR),Yes,No
+produit,prix_produit,Unit price of the product,Decimal (DECIMAL),Yes,No
+commande,numero_commande,Unique identifier of the order,String (VARCHAR),Yes,No
+commande,date_commande,Date the order was placed,DD/MM/YYYY,Yes,No
+ligne_commande,quantite_commandee,Quantity of product ordered,Integer (INT),Yes,No

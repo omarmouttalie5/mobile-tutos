@@ -1,0 +1,26 @@
+erDiagram
+
+    CLIENT ||--o{ COMMANDE : "passe (1,1 -> 0,N)"
+    COMMANDE ||--|{ COMMANDE_PRODUIT_RELATION : "comporte (1,1 -> 1,N)"
+    PRODUIT ||--o{ COMMANDE_PRODUIT_RELATION : "concerne (0,N -> 1,1)"
+
+    CLIENT {
+        client_id ID
+        nom Texte
+        email Texte
+    }
+
+    COMMANDE {
+        commande_id ID
+        date_commande Date
+    }
+
+    PRODUIT {
+        produit_id ID
+        nom Texte
+        prix Decimal
+    }
+
+    COMMANDE_PRODUIT_RELATION {
+        quantite_commandee Quantite
+    }
