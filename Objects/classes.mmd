@@ -1,9 +1,9 @@
 classDiagram
-    class Categorie {
+    class Category {
         -int id
-        -string nom
-        -string couleur
-        -string icone
+        -string name
+        -string color
+        -string icon
     }
     class User {
         -int id
@@ -11,21 +11,21 @@ classDiagram
         -string password
         -string role
     }
-    class Auteur {
+    class Author {
         -int id
-        -string nom
-        -string prenom
-        -string biographie
+        -string lastName
+        -string firstName
+        -string biography
         -string avatar
     }
     class Article {
         -int id
-        -string titre
-        -string contenu
-        -string statut
-        -DateTime date_creation
+        -string title
+        -string content
+        -string status
+        -DateTime creationDate
     }
 
-    User "1" -- "0..1" Auteur : a pour profil
-    Auteur "1" -- "0..*" Article : rédige
-    Categorie "1" -- "0..*" Article : contient
+    User "1" -- "0..1" Author : has profile
+    Author "1" -- "0..*" Article : writes
+    Category "1" -- "0..*" Article : contains
