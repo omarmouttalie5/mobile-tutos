@@ -5,14 +5,12 @@ classDiagram
         -string couleur
         -string icone
     }
-    
     class User {
         -int id
         -string email
         -string password
         -string role
     }
-    
     class Auteur {
         -int id
         -string nom
@@ -20,7 +18,6 @@ classDiagram
         -string biographie
         -string avatar
     }
-    
     class Article {
         -int id
         -string titre
@@ -28,3 +25,7 @@ classDiagram
         -string statut
         -DateTime date_creation
     }
+
+    User "1" -- "0..1" Auteur : a pour profil
+    Auteur "1" -- "0..*" Article : rédige
+    Categorie "1" -- "0..*" Article : contient
