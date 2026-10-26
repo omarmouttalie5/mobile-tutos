@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Catégories</title>
+    <!-- Simple styling for preview clarity -->
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"] { padding: 8px; width: 300px; }
+        button { padding: 8px 16px; cursor: pointer; background-color: blue; border: none; border-radius: 12px; color: white; font-weight: bold;}
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+    </style>
+    <!-- Loads app.js after the HTML elements are fully parsed -->
+    <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <main>
+        <h1>Ajouter une catégorie</h1>
+
+        <form id="form-categorie">
+            <div class="form-group">
+                <label for="nom">Nom de la catégorie :</label>
+                <!-- The 'name' attribute is required so FormData can read it -->
+                <input type="text" id="nom" name="nom" placeholder="Ex: Technologie" required>
+            </div>
+
+            <button type="submit" id="btn-submit-form">Enregistrer</button>
+        </form>
+    </main>
+
+</body>
+</html>
