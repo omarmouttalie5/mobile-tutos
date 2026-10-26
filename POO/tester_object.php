@@ -1,6 +1,6 @@
 <?php
 
-require_once "backend/Categorie.php";
+require_once "backend/category.php";
 
 $categorie1 = new Categorie(1, "UI/UX", "Blue", "XS");
 $categorie2 = new Categorie(2, "Functional programming", "Red", "XO");
