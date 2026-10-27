@@ -3,62 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Catégories</title>
-    <!-- Simple styling for preview clarity -->
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"] { padding: 8px; width: 300px; }
-        button { padding: 8px 16px; cursor: pointer; background-color: blue; border: none; border-radius: 12px; color: white; font-weight: bold;}
-        button:disabled { opacity: 0.6; cursor: not-allowed; }
-
-        /* Toast Container & Notification Styles */
-        #toast-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1000;
-        }
-        .toast {
-            padding: 12px 20px;
-            border-radius: 6px;
-            color: white;
-            font-weight: 500;
-            min-width: 250px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .toast-success {
-            background-color: #16a34a; /* Green */
-        }
-        .toast-error {
-            background-color: #dc2626; /* Red */
-        }
-    </style>
-    <!-- Loads app.js after the HTML elements are fully parsed -->
-    <script src="assets/js/app.js" defer></script>
+    <title>Gestion des Catégories — Blog Administration</title>
+    <!-- Tailwind CSS CDN[cite: 6] -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800 min-h-screen">
 
-    <main>
-        <h1>Ajouter une catégorie</h1>
+    <!-- Global Flex Container (Column on mobile, row on PC)[cite: 6] -->
+    <div class="flex flex-col md:flex-row min-h-screen">
 
-        <form id="form-categorie">
-            <div class="form-group">
-                <label for="nom">Nom de la catégorie :</label>
-                <!-- The 'name' attribute is required so FormData can read it -->
-                <input type="text" id="nom" name="nom" placeholder="Ex: Technologie" required>
+        <!-- Sidebar (Hidden on mobile, visible from md breakpoint onwards)[cite: 6] -->
+        <aside class="hidden md:block w-64 bg-slate-900 text-white p-6 shadow-md">
+            <h2 class="text-2xl font-bold mb-6">Mon Blog</h2>
+            <nav class="space-y-2">
+                <a href="#" class="block py-2 px-4 bg-slate-800 rounded font-medium">Catégories</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area[cite: 6] -->
+        <main class="flex-1 p-4 md:p-8">
+            <h1 class="text-3xl font-bold mb-6 text-slate-900">Gestion des Catégories</h1>
+
+            <!-- Formulaire (1 col on mobile, 2 cols on PC)[cite: 6] -->
+            <form id="form-categorie" class="bg-white p-6 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="form-group md:col-span-2">
+                    <label for="nom" class="block mb-2 font-semibold text-gray-700">Nom de la catégorie :</label>
+                    <input type="text" id="nom" name="nom" placeholder="Ex: Technologie" required
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div class="md:col-span-2 mt-2">
+                    <button type="submit" id="btn-submit-form" 
+                            class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
+
+            <!-- Responsive Data Table Container (Prevents mobile overflow)[cite: 6] -->
+            <div class="overflow-x-auto bg-white p-6 rounded-lg shadow-md">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="border-b border-gray-200 text-gray-600 uppercase text-sm">
+                            <th class="py-3 px-4">Nom</th>
+                            <th class="py-3 px-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-categories-body">
+                        <!-- Dynamic rows will be injected here -->
+                    </tbody>
+                </table>
             </div>
 
-            <button type="submit" id="btn-submit-form">Enregistrer</button>
-        </form>
-    </main>
+            <!-- Toast Notification Container -->
+            <div id="toast-container" class="fixed bottom-4 right-4 flex flex-col gap-2 z-50"></div>
+        </main>
 
-    <!-- Container required for dynamic toast notifications -->
-    <div id="toast-container"></div>
+    </div>
 
+    <!-- Application JavaScript -->
+    <script src="assets/js/app.js" defer></script>
 </body>
 </html>
