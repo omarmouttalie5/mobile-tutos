@@ -12,6 +12,31 @@
         input[type="text"] { padding: 8px; width: 300px; }
         button { padding: 8px 16px; cursor: pointer; background-color: blue; border: none; border-radius: 12px; color: white; font-weight: bold;}
         button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Toast Container & Notification Styles */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .toast {
+            padding: 12px 20px;
+            border-radius: 6px;
+            color: white;
+            font-weight: 500;
+            min-width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .toast-success {
+            background-color: #16a34a; /* Green */
+        }
+        .toast-error {
+            background-color: #dc2626; /* Red */
+        }
     </style>
     <!-- Loads app.js after the HTML elements are fully parsed -->
     <script src="assets/js/app.js" defer></script>
@@ -31,6 +56,9 @@
             <button type="submit" id="btn-submit-form">Enregistrer</button>
         </form>
     </main>
+
+    <!-- Container required for dynamic toast notifications -->
+    <div id="toast-container"></div>
 
 </body>
 </html>

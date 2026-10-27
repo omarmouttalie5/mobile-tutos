@@ -1,7 +1,6 @@
 const formCategorie = document.getElementById('form-categorie');
 const btnSubmit = document.getElementById('btn-submit-form');
 
-
 function setLoadingState(isLoading) {
     btnSubmit.disabled = isLoading;
     if (isLoading) {
@@ -9,6 +8,26 @@ function setLoadingState(isLoading) {
     } else {
         btnSubmit.textContent = 'Enregistrer';
     }
+}
+
+/**
+ * Displays a dynamic temporary Toast notification
+ * @param {string} message - The text message to display
+ * @param {string} type - 'success' (green) or 'error' (red)
+ */
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    // Automatically remove the toast after 3 seconds (3000 ms)
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
 }
 
 // Intercept form submission
@@ -19,7 +38,7 @@ formCategorie.addEventListener('submit', (e) => {
     setLoadingState(true);
 
     // 2. Send async request to PHP controller
-    fetch('api/controllers/CategorieController.php', {
+    fetch('api/controller/CategorieController.php', {
         method: 'POST',
         body: new FormData(formCategorie)
     })
@@ -31,12 +50,14 @@ formCategorie.addEventListener('submit', (e) => {
     })
     .then(data => {
         console.log("Succès :", data);
-        alert(data.message || "Catégorie ajoutée avec succès !");
+        // Replaced alert() with showToast() success feedback
+        showToast(data.message || "Catégorie ajoutée avec succès !", 'success');
         formCategorie.reset(); // Reset form fields on success
     })
     .catch(error => {
         console.error("Erreur réseau ou serveur :", error);
-        alert("Une erreur est survenue lors de l'enregistrement.");
+        // Replaced alert() with showToast() error feedback
+        showToast("Une erreur est survenue lors de l'enregistrement.", 'error');
     })
     .finally(() => {
         // 3. Always unlock the interface whether request succeeded or failed
