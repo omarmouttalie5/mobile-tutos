@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Catégories — Blog Administration</title>
-    <!-- Tailwind CSS CDN[cite: 6] -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen">
 
-    <!-- Global Flex Container (Column on mobile, row on PC)[cite: 6] -->
+    <!-- Global Flex Container -->
     <div class="flex flex-col md:flex-row min-h-screen">
 
-        <!-- Sidebar (Hidden on mobile, visible from md breakpoint onwards)[cite: 6] -->
+        <!-- Sidebar -->
         <aside class="hidden md:block w-64 bg-slate-900 text-white p-6 shadow-md">
             <h2 class="text-2xl font-bold mb-6">Mon Blog</h2>
             <nav class="space-y-2">
@@ -20,31 +20,37 @@
             </nav>
         </aside>
 
-        <!-- Main Content Area[cite: 6] -->
+        <!-- Main Content Area -->
         <main class="flex-1 p-4 md:p-8">
             <h1 class="text-3xl font-bold mb-6 text-slate-900">Gestion des Catégories</h1>
 
-            <!-- Formulaire (1 col on mobile, 2 cols on PC)[cite: 6] -->
+            <!-- Formulaire (1 col mobile, 2 cols PC) -->
             <form id="form-categorie" class="bg-white p-6 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="form-group md:col-span-2">
                     <label for="nom" class="block mb-2 font-semibold text-gray-700">Nom de la catégorie :</label>
                     <input type="text" id="nom" name="nom" placeholder="Ex: Technologie" required
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
                 </div>
 
                 <div class="md:col-span-2 mt-2">
                     <button type="submit" id="btn-submit-form" 
-                            class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
-                        Enregistrer
+                            class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 ease-in-out disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                        <!-- SVG Spinner (hidden by default) -->
+                        <svg id="spinner-submit" class="w-5 h-5 animate-spin text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span id="text-submit">Enregistrer</span>
                     </button>
                 </div>
             </form>
 
-            <!-- Responsive Data Table Container (Prevents mobile overflow)[cite: 6] -->
+            <!-- Responsive Data Table Container -->
             <div class="overflow-x-auto bg-white p-6 rounded-lg shadow-md">
                 <table class="w-full text-left border-collapse min-w-[600px]">
                     <thead>
                         <tr class="border-b border-gray-200 text-gray-600 uppercase text-sm">
+                            <th class="py-3 px-4">ID</th>
                             <th class="py-3 px-4">Nom</th>
                             <th class="py-3 px-4">Actions</th>
                         </tr>
@@ -55,7 +61,7 @@
                 </table>
             </div>
 
-            <!-- Toast Notification Container -->
+            <!-- Toast Container -->
             <div id="toast-container" class="fixed bottom-4 right-4 flex flex-col gap-2 z-50"></div>
         </main>
 
